@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: dht11-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GIST_ID
+        sync: false
+      - key: FILE_NAME
+        value: data.json
+      - key: DEBUG
+        value: false
